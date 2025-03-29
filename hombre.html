@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de Mujer</title>
+    <link rel="shortcut icon" href="Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="pagina_principal.css">
+    <link rel="stylesheet" href="barra_iconos.css">
+    <link rel="stylesheet" href="mujer.css">
+    <script defer src="script.js"></script>
+    <script defer src="pagina_principal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menu-container">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="hombre.html">HOMBRE</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="Gorras">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="mujer.html">MUJER</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="Gorras">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="diseñohtml.html">DISEÑA</a></li>
+            </ul>
+
+            <div class="logo">
+                <a href="pagina_principal.html"><img src="img/Logo final.png" alt="Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="quienes.html">¿QUIENES SOMOS?</a></li>
+                <li><a href="dudas.html">¿DUDAS?</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <div class="icon-container" id="search-icon">
+                    <i class="fas fa-search"></i>
+                    <span class="tooltip"></span>
+                    <div class="dropdown-panel search-panel">
+                        <h3>Buscar productos</h3>
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="¿Qué estás buscando?">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="recent-searches">
+                            <h4>Búsquedas recientes</h4>
+                            <ul id="recent-searches-list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-container" id="favorites-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="tooltip"></span>
+                    <span class="badge" id="favorites-count">2</span>
+                    <div class="dropdown-panel favorites-panel">
+                        <h3>Tus favoritos</h3>
+                        <div id="favorites-list"></div>
+                        <a href="favoritos.html" class="view-all">Ver todos los favoritos</a>
+                    </div>
+                </div>
+                <div class="icon-container" id="user-icon">
+                    <i class="fas fa-user"></i>
+                    <span class="tooltip"></span>
+                    <div class="dropdown-panel user-panel">
+                        <h3>Mi cuenta</h3>
+                        <div id="user-not-logged">
+                            <p>Inicia sesión para acceder a tu cuenta</p>
+                            <div class="auth-buttons">
+                                <button id="login-button" onclick="window.location.href='perfil.html'">Iniciar sesión</button>
+                                <button id="register-button" onclick="window.location.href='perfil.html'">Registrarse</button>
+                            </div>
+                        </div>
+                        <div id="user-logged" style="display: none;">
+                            <p>Hola, <span id="user-name"></span></p>
+                            <ul class="user-menu">
+                                <li><a href="perfil.html">Mi perfil</a></li>
+                                <li><a href="pagina_principal.html" id="logout-button">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-container" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="tooltip"></span>
+                    <span class="badge" id="cart-count">2</span>
+                    <div class="dropdown-panel cart-panel">
+                        <h3>Tu carrito</h3>
+                        <div id="cart-items"></div>
+                        <div class="cart-total">
+                            <p>Total: <span id="cart-total-amount">$0.00</span></p>
+                        </div>
+                        <div class="cart-buttons">
+                            <a href="carrito.html" class="view-cart-button">Ver carrito</a>
+                            <form action="https://www.paypal.com/ncp/payment/6U28Y2Z4JY9ZC" method="post" target="_blank" style="display:inline;">
+                                <button id="checkout-button" type="submit">Pagar ahora</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="collections-container">
+        <h1 class="collections-title">COLECCIONES PARA HOMBRE</h1>
+        <a href="playerahombre.html" class="collections-grid">
+            <div class="collection-card playeras">
+                <img src="img/playera.png" alt="Colección Playeras">
+                <div class="collection-info">
+                    <h2>Playeras</h2>
+                    <span class="items">24 items</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="poloshombre.html" class="collections-grid">
+            <div class="collection-card polos">
+                <img src="img/polo_blanca.png" alt="Colección Polos">
+                <div class="collection-info">
+                    <h2>Polos</h2>
+                    <span class="items">13 items</span>
+                </div>
+            </div>
+        </a>
+            
+        <a href="sudaderahombre.html" class="collections-grid">
+            <div class="collection-card sudadera">
+                <img src="img/sudadera.png" alt="Colección Sudadera">
+                <div class="collection-info">
+                    <h2>Sudadera</h2>
+                    <span class="items">14 items</span>
+                </div>
+            </div>
+        </a>
+        <a href="camisashombre.html" class="collections-grid">
+            <div class="collection-card camisas">
+                <img src="Img_DB/camisablanca.png" alt="Colección Camisas">
+                <div class="collection-info">
+                    <h2>Camisas</h2>
+                    <span class="items">19 items</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="pantalonhombre.html" class="collections-grid">
+            <div class="collection-card pantalones">
+                <img src="img/pans.png" alt="Colección Pantalones">
+                <div class="collection-info">
+                    <h2>Pantalones</h2>
+                    <span class="items">8 items</span>
+                </div>
+            </div>
+        </a>
+        </div>
+    </section>
+
+
+    <script src="pagina_principal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="barra_iconos.js"></script>
+</body>
+</html>

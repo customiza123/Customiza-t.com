@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Cuenta - Inicio de Sesión</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <div class="main-container">
+    <div class="account-container">
+        <h2 class="account-title">Mi Cuenta</h2>
+        <div class="login-buttons">
+            <button class="btn btn-login" onclick="openLoginModal()">Iniciar sesión</button>
+            <button class="btn btn-register" onclick="openRegisterModal()">Registrarse</button>
+        </div>
+        <a href="pagina_principal.html" class="button home-button">Regresar a Página Principal</a>
+    </div>
+       <!-- Icono Admin ID Card -->
+    <div class="icon-card">
+            <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#118ab2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <circle cx="8.5" cy="12" r="2.5" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M14 9h4" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M14 12h4" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M14 15h4" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M5 17c1.5-1 3.3-1 5 0" stroke="#118ab2" stroke-width="1.5"/>
+                    </svg>
+                </div>
+            <div class="account-containeer">
+                <div class="login-buttonss">
+                     <button class="btn-btn-btn-login" onclick="openLoginModal()">Admin ID</button>
+            </div>
+        </div>
+    </div>        
+
+    <!-- Modal de Inicio de Sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="login-email" class="form-input" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="login-password" class="form-input" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="form-submit">Iniciar Sesión</button>
+            </form>
+            <div class="social-login">
+                <button class="social-btn" onclick="loginWithGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Iniciar sesión con Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Registrarse</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <input type="text" id="register-name" class="form-input" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="register-email" class="form-input" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="register-password" class="form-input" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="register-confirm-password" class="form-input" placeholder="Confirmar contraseña" required>
+                </div>
+                <button type="submit" class="form-submit">Registrarse</button>
+            </form>
+            <div class="social-login">
+                <button class="social-btn" onclick="registerWithGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Registrarse con Google
+                </button>
+            </div>
+            <div id="error-message" style="color: red; margin-top: 10px; display: none;"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword,
+            GoogleAuthProvider, 
+            signInWithPopup 
+        } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpVEq7eoPSnM--RyVOjS5q3txKQVzgzuM",
+            authDomain: "customiza-t.firebaseapp.com",
+            projectId: "customiza-t",
+            storageBucket: "customiza-t.firebasestorage.app",
+            messagingSenderId: "423385006080",
+            appId: "1:423385006080:web:81d380500166d3e4e2d8e5",
+            measurementId: "G-TBELCS10HH"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Funciones para manejar modales
+        window.openLoginModal = function() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        window.openRegisterModal = function() {
+            document.getElementById('registerModal').style.display = 'flex';
+            // Ocultar mensajes de error previos
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Función para mostrar mensajes de error
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        // Función mejorada para guardar datos en MySQL a través de PHP
+        async function saveUserToDatabase(userData) {
+            try {
+                console.log("Enviando datos a la base de datos:", userData);
+                
+                // Verificar que userData sea un objeto válido antes de convertirlo a JSON
+                if (!userData || typeof userData !== 'object') {
+                    throw new Error("Datos de usuario inválidos");
+                }
+                
+                const jsonData = JSON.stringify(userData);
+                console.log("JSON a enviar:", jsonData);
+                
+                const response = await fetch('save_user.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: jsonData
+                });
+                
+                // Verificar si la respuesta es JSON
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    const data = await response.json();
+                    console.log("Respuesta del servidor:", data);
+                    
+                    if (data.success) {
+                        console.log('Usuario guardado en la base de datos MySQL');
+                        return true;
+                    } else {
+                        console.error('Error al guardar en la base de datos:', data.message);
+                        showError(`Error al guardar en la base de datos: ${data.message}`);
+                        return false;
+                    }
+                } else {
+                    // Si la respuesta no es JSON, leer como texto
+                    const text = await response.text();
+                    console.error('Respuesta no JSON recibida:', text);
+                    showError(`Error: Respuesta del servidor no es JSON válido. ${text}`);
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error en la conexión con la base de datos:', error);
+                showError(`Error en la conexión con la base de datos: ${error.message}`);
+                return false;
+            }
+        }
+
+        // Función mejorada para verificar usuario en la base de datos
+        async function checkUserInDatabase(uid) {
+            try {
+                const response = await fetch(`check_user.php?uid=${encodeURIComponent(uid)}`);
+                
+                // Verificar si la respuesta es JSON
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    const data = await response.json();
+                    return data;
+                } else {
+                    // Si la respuesta no es JSON, leer como texto
+                    const text = await response.text();
+                    console.error('Respuesta no JSON recibida:', text);
+                    throw new Error(`Respuesta del servidor no es JSON válido: ${text}`);
+                }
+            } catch (error) {
+                console.error("Error al verificar usuario:", error);
+                throw error;
+            }
+        }
+
+        // Evento de inicio de sesión
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                // Autenticación con Firebase
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                // Verificar si el usuario existe en la base de datos MySQL
+                try {
+                    const data = await checkUserInDatabase(user.uid);
+                    
+                    if (!data.exists) {
+                        // Si no existe, guardar en la base de datos
+                        await saveUserToDatabase({
+                            uid: user.uid,
+                            email: user.email,
+                            name: user.displayName || email.split('@')[0],
+                            provider: 'email',
+                            photoURL: user.photoURL || ''
+                        });
+                    }
+                    
+                    alert('Inicio de sesión exitoso');
+                    closeModal('loginModal');
+                    window.location.href = 'pagina_principal.html';
+                } catch (dbError) {
+                    console.error("Error al verificar usuario:", dbError);
+                    // Si hay error en la base de datos, continuamos con la sesión iniciada
+                    alert('Inicio de sesión exitoso, pero hubo un error con la base de datos');
+                    closeModal('loginModal');
+                    window.location.href = 'pagina_principal.html';
+                }
+            } catch (error) {
+                alert('Error de inicio de sesión: ' + error.message);
+            }
+        });
+
+        // Evento de registro
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                showError('Las contraseñas no coinciden');
+                return;
+            }
+
+            try {
+                // Registro en Firebase
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                // Guardar en la base de datos MySQL
+                const userData = {
+                    uid: user.uid,
+                    name: name,
+                    email: email,
+                    provider: 'email',
+                    photoURL: '',
+                    created_at: new Date().toISOString()
+                };
+                
+                console.log("Datos de usuario a guardar:", userData);
+                
+                try {
+                    const saved = await saveUserToDatabase(userData);
+                    if (saved) {
+                        alert('Registro exitoso');
+                        closeModal('registerModal');
+                        window.location.href = 'pagina_principal.html';
+                    } else {
+                        alert('Registro en Firebase exitoso, pero hubo un error al guardar en la base de datos');
+                    }
+                } catch (dbError) {
+                    console.error("Error al guardar en base de datos:", dbError);
+                    alert('Registro en Firebase exitoso, pero hubo un error al guardar en la base de datos');
+                }
+            } catch (error) {
+                showError('Error de registro: ' + error.message);
+            }
+        });
+
+        // Inicio de sesión con Google
+        window.loginWithGoogle = async function() {
+            const provider = new GoogleAuthProvider();
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                
+                // Guardar en la base de datos MySQL
+                try {
+                    const userData = {
+                        uid: user.uid,
+                        name: user.displayName,
+                        email: user.email,
+                        provider: 'google',
+                        photoURL: user.photoURL,
+                        created_at: new Date().toISOString()
+                    };
+                    
+                    await saveUserToDatabase(userData);
+                    alert('Inicio de sesión con Google exitoso');
+                    closeModal('loginModal');
+                    window.location.href = 'pagina_principal.html';
+                } catch (dbError) {
+                    console.error("Error al guardar usuario de Google:", dbError);
+                    alert('Inicio de sesión con Google exitoso, pero hubo un error con la base de datos');
+                    closeModal('loginModal');
+                    window.location.href = 'pagina_principal.html';
+                }
+            } catch (error) {
+                alert('Error en inicio de sesión con Google: ' + error.message);
+            }
+        }
+
+        // Registro con Google
+        window.registerWithGoogle = async function() {
+            const provider = new GoogleAuthProvider();
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                
+                // Guardar en la base de datos MySQL
+                try {
+                    const userData = {
+                        uid: user.uid,
+                        name: user.displayName,
+                        email: user.email,
+                        provider: 'google',
+                        photoURL: user.photoURL,
+                        created_at: new Date().toISOString()
+                    };
+                    
+                    await saveUserToDatabase(userData);
+                    alert('Registro con Google exitoso');
+                    closeModal('registerModal');
+                    window.location.href = 'pagina_principal.html';
+                } catch (dbError) {
+                    console.error("Error al guardar usuario de Google:", dbError);
+                    alert('Registro con Google exitoso, pero hubo un error con la base de datos');
+                    closeModal('registerModal');
+                    window.location.href = 'pagina_principal.html';
+                }
+            } catch (error) {
+                showError('Error en registro con Google: ' + error.message);
+            }
+        }
+
+        // Script para el botón de regreso a página principal
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.querySelector('.home-button');
+            
+            if (homeButton) {
+                homeButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Redirige a la página principal
+                    window.location.href = 'pagina_principal.html';
+                });
+            }
+        });
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>

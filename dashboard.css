@@ -1,0 +1,527 @@
+/* 🎨 Variables de colores */
+:root {
+    --primary: #e70d98;
+    --secondary: #991fa6;
+    --bg-light: #f2f2f2;
+    --bg-dark: #1e1e2e;
+    --text-light: #222;
+    --text-dark: #eee;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #2a2a3c;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: var(--bg-light);
+    color: var(--text-light);
+}
+
+/* 🟣 Sidebar */
+.sidebar {
+    width: 250px;
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background: var(--secondary);
+}
+
+/* Logo container */
+.logo-container {
+        padding: 15px;
+        background: linear-gradient(to right, rgba(231, 13, 152, 0.95), rgba(231, 13, 152, 0.8));
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden; 
+        max-height: 120px;
+}
+
+/* Logo styling */
+.logo {
+    max-width: 90%; 
+    max-height: 100px; 
+    height: auto;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+/* Menu styling */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    background-color: rgba(153, 31, 166, 0.7);
+    margin: 5px 10px;
+    border-radius: 4px;
+}
+
+.sidebar-menu a, .sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    margin: 5px 10px;
+    border-radius: 4px;
+    width: calc(100% - 20px);
+}
+
+.sidebar-menu a:hover, .sidebar-menu a.active {
+    background-color: var(--secondary);
+}
+
+.sidebar-menu .icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* 🔹 Contenido principal */
+.main-content {
+    margin-left: 270px;
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 📊 Dashboard en Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* 📦 Tarjetas de Pedidos */
+.card {
+    background: var(--card-bg-light);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* 📦 Tarjetas de Últimos Pedidos */
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.order-card {
+    background: var(--card-bg-light);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    transition: 0.3s;
+}
+
+.order-card:hover {
+    transform: scale(1.05);
+}
+
+/* 📅 Sección del Calendario */
+.orders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.calendar-section {
+    background: var(--card-bg-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calendar-section h2 {
+    margin-bottom: 10px;
+}
+
+.calendar-section input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    border: 1px solid var(--shadow-light);
+    border-radius: 5px;
+}
+
+/* 📋 Tabla de Pedidos */
+.orders-table {
+    background: var(--card-bg-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    overflow-x: auto;
+}
+
+.orders-table h2 {
+    margin-bottom: 10px;
+}
+
+.orders-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th, .orders-table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--shadow-light);
+    text-align: left;
+}
+
+/* 🌙 Modo Oscuro */
+.dark-mode {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+/* Ajustes para modo oscuro */
+.dark-mode .card, 
+.dark-mode .order-card,
+.dark-mode .calendar-section,
+.dark-mode .orders-table {
+    background: var(--card-bg-dark);
+    box-shadow: 0 4px 6px var(--shadow-dark);
+}
+
+.dark-mode .calendar-section input {
+    color: var(--text-dark);
+    background: var(--card-bg-dark);
+    border-color: var(--shadow-dark);
+}
+
+.dark-mode .orders-table table {
+    color: var(--text-dark);
+    border-color: var(--shadow-dark);
+}
+
+.dark-mode .orders-table th, 
+.dark-mode .orders-table td {
+    color: var(--text-dark);
+}
+
+.dark-mode .sidebar {
+    background-color: #212121;
+}
+
+.dark-mode .sidebar-menu a {
+    background-color: rgba(66, 66, 66, 0.7);
+}
+
+.dark-mode .sidebar-menu a:hover, .dark-mode .sidebar-menu a.active {
+    background-color: rgba(66, 66, 66, 0.9);
+}
+
+.dark-mode .logo-container {
+    background: linear-gradient(to right, rgba(33, 33, 33, 0.95), rgba(33, 33, 33, 0.8));
+}
+
+
+
+
+/* Mejoras para tablas y secciones sin estilo */
+.listado-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: var(--card-bg-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+.listado-table th, .listado-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.listado-table th {
+    background-color: rgba(231, 13, 152, 0.1);
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.listado-table tr:hover {
+    background-color: rgba(231, 13, 152, 0.05);
+}
+
+/* Estilos para formularios */
+.form-section {
+    background: var(--card-bg-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    margin-bottom: 20px;
+}
+
+.form-section h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+    border-bottom: 1px solid rgba(231, 13, 152, 0.2);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(231, 13, 152, 0.2);
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Estilos para sección de análisis */
+.analysis-section {
+    background: var(--card-bg-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    margin-bottom: 20px;
+}
+
+.analysis-section h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+/* Tarjetas de estadísticas mejoradas */
+.stats-card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.stats-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.stats-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.stats-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Mejoras para los contenedores de búsqueda */
+.search-container {
+    background: var(--card-bg-light);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+/* Estilos para paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.pagination-item {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pagination-item.active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.pagination-item:hover:not(.active) {
+    background-color: #f8f9fa;
+}
+
+/* Adaptaciones para modo oscuro */
+.dark-mode .form-section,
+.dark-mode .analysis-section,
+.dark-mode .search-container,
+.dark-mode .listado-table,
+.dark-mode .stats-card {
+    background: var(--card-bg-dark);
+    box-shadow: 0 4px 6px var(--shadow-dark);
+}
+
+.dark-mode .form-control,
+.dark-mode .search-input,
+.dark-mode .search-select {
+    background-color: #333;
+    border-color: #444;
+    color: var(--text-dark);
+}
+
+.dark-mode .listado-table th {
+    background-color: rgba(153, 31, 166, 0.2);
+    color: var(--text-dark);
+}
+
+.dark-mode .listado-table tr:hover {
+    background-color: rgba(153, 31, 166, 0.1);
+}
+
+.dark-mode .form-section h3,
+.dark-mode .analysis-section h3 {
+    border-bottom-color: rgba(153, 31, 166, 0.2);
+}
+
+.dark-mode .stats-card {
+    background: var(--card-bg-dark);
+}
+
+.dark-mode .stats-label {
+    color: #bbb;
+}
+
+.dark-mode .pagination-item {
+    background-color: #333;
+    border-color: #444;
+    color: var(--text-dark);
+}
+
+.dark-mode .pagination-item:hover:not(.active) {
+    background-color: #444;
+}

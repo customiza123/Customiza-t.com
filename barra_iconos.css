@@ -1,0 +1,310 @@
+/* Contenedor principal de iconos de navegación - selector específico */
+.navbar .nav-icons {
+    display: flex;
+    align-items: center;
+    background-color: #121212;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+}
+
+/* Contenedores individuales de iconos - selectores específicos */
+.navbar .nav-icons .icon-container {
+    position: relative;
+    margin: 0 0.8rem;
+    cursor: pointer;
+}
+
+.navbar .nav-icons .icon-container i {
+    font-size: 1.2rem;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.navbar .nav-icons .icon-container:hover i {
+    color: #fa10fa;
+}
+
+/* Tooltip para los iconos - selectores específicos */
+.navbar .nav-icons .icon-container .tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.navbar .nav-icons .icon-container:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Badge (contador) - selectores específicos */
+.navbar .nav-icons .icon-container .badge {
+    position: absolute;
+    top: 50%; /* Centrado verticalmente */
+    right: -12px; /* Movido más a la derecha del icono */
+    transform: translateY(-50%); /* Ajuste fino para centrado vertical */
+    background-color: #fa10fa;
+    color: white;
+    font-size: 0.6rem;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    z-index: 1; /* Asegura que el badge esté por encima, pero no cubre el icono */
+}
+
+/* Paneles desplegables - selectores específicos */
+.navbar .nav-icons .icon-container .dropdown-panel {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    z-index: 100;
+    display: none;
+}
+
+.navbar .nav-icons .icon-container .dropdown-panel h3 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.navbar .nav-icons .icon-container .dropdown-panel h4 {
+    color: #555;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+/* Panel de búsqueda - selectores específicos */
+.navbar .nav-icons #search-icon .search-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.navbar .nav-icons #search-icon .search-box input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+.navbar .nav-icons #search-icon .search-box button {
+    background-color: white;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 0.8rem;
+    cursor: pointer;
+}
+
+.navbar .nav-icons #search-icon .recent-searches ul {
+    list-style: none;
+}
+
+.navbar .nav-icons #search-icon .recent-searches ul li {
+    padding: 0.5rem 0;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.navbar .nav-icons #search-icon .recent-searches ul li:hover {
+    color: #fa10fa;
+}
+
+/* Panel de favoritos - selectores específicos */
+.navbar .nav-icons #favorites-icon #favorites-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.navbar .nav-icons #favorites-icon .favorite-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.navbar .nav-icons #favorites-icon .favorite-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 0.5rem;
+}
+
+.navbar .nav-icons #favorites-icon .favorite-item-details h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.navbar .nav-icons #favorites-icon .favorite-item-details p {
+    color: #fa10fa;
+    font-size: 0.8rem;
+    margin: 0.2rem 0;
+}
+
+.navbar .nav-icons #favorites-icon .remove-favorite {
+    margin-left: auto;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.navbar .nav-icons #favorites-icon .remove-favorite:hover {
+    color: #fa10fa;
+}
+
+/* Panel de usuario - selectores específicos */
+.navbar .nav-icons #user-icon .auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.navbar .nav-icons #user-icon .auth-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.navbar .nav-icons #user-icon #login-button {
+    background-color: #fa10fa;
+    color: white;
+}
+
+.navbar .nav-icons #user-icon #register-button {
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+}
+
+.navbar .nav-icons #user-icon .user-menu {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.navbar .nav-icons #user-icon .user-menu li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.navbar .nav-icons #user-icon .user-menu li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.navbar .nav-icons #user-icon .user-menu li a:hover {
+    color: #fa10fa;
+}
+
+/* Panel de carrito - selectores específicos */
+.navbar .nav-icons #cart-icon #cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.navbar .nav-icons #cart-icon .cart-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.navbar .nav-icons #cart-icon .cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 0.5rem;
+}
+
+.navbar .nav-icons #cart-icon .cart-item-details h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.navbar .nav-icons #cart-icon .cart-item-details p {
+    color: #666;
+    font-size: 0.8rem;
+    margin: 0.2rem 0;
+}
+
+.navbar .nav-icons #cart-icon .cart-quantity {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.navbar .nav-icons #cart-icon .cart-quantity button {
+    width: 20px;
+    height: 20px;
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.navbar .nav-icons #cart-icon .cart-quantity span {
+    margin: 0 0.5rem;
+}
+
+.navbar .nav-icons #cart-icon .cart-total {
+    margin: 1rem 0;
+    text-align: right;
+    font-weight: bold;
+}
+
+.navbar .nav-icons #cart-icon .cart-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .nav-icons #cart-icon .view-cart-button, 
+.navbar .nav-icons #cart-icon #checkout-button {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.navbar .nav-icons #cart-icon .view-cart-button {
+    background-color: #f3f3f3;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.navbar .nav-icons #cart-icon #checkout-button {
+    background-color: #fa10fa;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar .nav-icons .icon-container .view-all {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: #fa10fa;
+    text-decoration: none;
+}
+
+/* Para mostrar los paneles cuando se hace hover o clic - selector específico */
+.navbar .nav-icons .icon-container.active .dropdown-panel {
+    display: block;
+}

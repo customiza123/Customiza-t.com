@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de Mujer</title>
+    <link rel="shortcut icon" href="Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="pagina_principal.css">
+    <link rel="stylesheet" href="barra_iconos.css">
+    <link rel="stylesheet" href="playera.css">
+    <script defer src="script.js"></script>
+    <script defer src="pagina_principal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menu-container">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="hombre.html">HOMBRE</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="Gorras">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="mujer.html">MUJER</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="Gorras">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="diseñohtml.html">DISEÑA</a></li>
+            </ul>
+
+            <div class="logo">
+                <a href="pagina_principal.html"><img src="img/Logo final.png" alt="Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="quienes.html">¿QUIENES SOMOS?</a></li>
+                <li><a href="dudas.html">¿DUDAS?</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <div class="icon-container" id="search-icon">
+                    <i class="fas fa-search"></i>
+                    <span class="tooltip"></span>
+                    <div class="dropdown-panel search-panel">
+                        <h3>Buscar productos</h3>
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="¿Qué estás buscando?">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="recent-searches">
+                            <h4>Búsquedas recientes</h4>
+                            <ul id="recent-searches-list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-container" id="favorites-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="tooltip"></span>
+                    <span class="badge" id="favorites-count">2</span>
+                    <div class="dropdown-panel favorites-panel">
+                        <h3>Tus favoritos</h3>
+                        <div id="favorites-list"></div>
+                        <a href="favoritos.html" class="view-all">Ver todos los favoritos</a>
+                    </div>
+                </div>
+                <div class="icon-container" id="user-icon">
+                    <i class="fas fa-user"></i>
+                    <span class="tooltip"></span>
+                    <div class="dropdown-panel user-panel">
+                        <h3>Mi cuenta</h3>
+                        <div id="user-not-logged">
+                            <p>Inicia sesión para acceder a tu cuenta</p>
+                            <div class="auth-buttons">
+                                <button id="login-button" onclick="window.location.href='perfil.html'">Iniciar sesión</button>
+                                <button id="register-button" onclick="window.location.href='perfil.html'">Registrarse</button>
+                            </div>
+                        </div>
+                        <div id="user-logged" style="display: none;">
+                            <p>Hola, <span id="user-name"></span></p>
+                            <ul class="user-menu">
+                                <li><a href="perfil.html">Mi perfil</a></li>
+                                <li><a href="pagina_principal.html" id="logout-button">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-container" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="tooltip"></span>
+                    <span class="badge" id="cart-count">2</span>
+                    <div class="dropdown-panel cart-panel">
+                        <h3>Tu carrito</h3>
+                        <div id="cart-items"></div>
+                        <div class="cart-total">
+                            <p>Total: <span id="cart-total-amount">$0.00</span></p>
+                        </div>
+                        <div class="cart-buttons">
+                            <a href="carrito.html" class="view-cart-button">Ver carrito</a>
+                            <form action="https://www.paypal.com/ncp/payment/6U28Y2Z4JY9ZC" method="post" target="_blank" style="display:inline;">
+                                <button id="checkout-button" type="submit">Pagar ahora</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="product-container">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="img/camisahombre.webp" alt="Playera Cuello V">
+                </div>
+                <div class="thumbnail-images">
+                    <div class="thumbnail active" data-img="img/playeraVmujerfrente.webp">
+                        <img src="img/camisahombrefrente.jpg" alt="Vista frontal">
+                    </div>
+                    <div class="thumbnail" data-img="Img/playeraVreversomujer.webp">
+                        <img src="Img/camisahombreatras.jpg" alt="Vista trasera">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-details">
+                
+                <h1 class="product-title"> CAMISA DE CUELLO PARA HOMBRE</h1>
+                <div class="product-meta">100% Algodón • Color Blanco</div>
+                
+                <div class="product-sku">SKU: C0306P0101C</div>
+                
+                <div class="product-price">
+                    <span class="price-amount">$ 256.00</span>
+                    <div class="price-info">
+                        Impuesto incluido. Los <a href="#" class="shipping-link">gastos de envío</a> se calculan en la pantalla de pagos.
+                    </div>
+                </div>
+                
+                <div class="product-options">
+                    <div class="quantity-selector">
+                        <label>Cantidad</label>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" id="decrease-qty">−</button>
+                            <input type="number" id="quantity" value="1" min="1">
+                            <button class="qty-btn" id="increase-qty">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="size-selector">
+                        <label>Variantes</label>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="ECH">ECH</button>
+                            <button class="size-btn" data-size="CH">CH</button>
+                            <button class="size-btn" data-size="M">M</button>
+                            <button class="size-btn" data-size="G">G</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                            <button class="size-btn" data-size="XXL">XXL</button>
+                        </div>
+                        <a href="#" class="size-guide">Guía de tallas</a>
+                    </div>
+                    
+                    <div class="color-selector">
+                        <label>Color</label>
+                        <div class="color-options">
+                            <div class="color-option active" data-color="Blanco" style="background-color: white; border: 1px solid #ddd;"></div>
+                            <div class="color-option" data-color="Negro" style="background-color: black;"></div>
+                            <div class="color-option" data-color="Azul Marino" style="background-color: navy;"></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button id="add-to-cart" class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+                
+                <div class="product-description">
+                    <h3>Descripción del producto</h3>
+                    <p>Playera de cuello V con manga corta para hombre, fabricada con 100% algodón de alta calidad. Diseño clásico y cómodo, ideal para uso diario. Disponible en varios colores y tallas.</p>
+                    <ul>
+                        <li>Material: 100% Algodón</li>
+                        <li>Cuello: Tipo V</li>
+                        <li>Manga: Corta</li>
+                        <li>Peso: Medio (Mid Weight)</li>
+                        <li>Ocasión: Casual</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="camisashombre.js"></script>
+</body>
+</html>

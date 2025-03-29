@@ -1,0 +1,553 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #110e19;
+    margin-top: 20px;
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+/*Diseño para barra de navegación principal*/
+/* Navbar styles */
+.navbar {
+    background: #110e19;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Menu container */
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 20px;
+}
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative;
+    margin-right: 55px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #991fa6, #e70d98, #ea6dc9);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}
+
+.submenu-links {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.submenu-links li {
+    padding: 10px 15px;
+}
+
+.submenu-links a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: 5px;
+}
+
+/* Estilos para los iconos */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-container {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.icon-container i {
+    font-size:20px;
+    color: #fa10fa;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 5px 10px;
+    font-size: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.icon-container:hover .tooltip {
+    display: block;
+}
+
+/* Estilos para los paneles desplegables */
+.dropdown-panel {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    min-width: 250px;
+    z-index: 1000;
+    border-radius: 3%;
+    text-decoration: none;
+   color: white;
+}
+
+.icon-container:hover .dropdown-panel {
+    display: block;
+}
+
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: rgba(24, 24, 24, 0.98);
+    top: 100%;
+    left: 0;
+    width: 1050px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid black;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.dropdown:hover .submenu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+}
+
+/* Submenu links */
+.submenu-links {
+    flex: 0;
+    list-style: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0px;
+}
+
+.submenu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 0;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.submenu ul li a:hover {
+    color: #6f85fd;
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* Submenu images */
+.submenu-images {
+    display: flex;
+    flex: 2;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+.submenu-images a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.submenu-images a:hover {
+    transform: translateY(-5px);
+}
+
+.submenu-images img {
+    width: 120px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.submenu-images a:hover img {
+    transform: scale(1.05);
+}
+
+.submenu-images a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    border-radius: 8px;
+}
+
+/* Logo styles */
+.logo img {
+
+    width: 150px;
+    height: auto;
+}
+
+
+/* Icons */
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition: color 0.3s;
+}
+
+.icons a:hover {
+    color: gray;
+}
+
+/* Swiper styles */
+.swiper {
+    margin-top: 40px;
+    z-index: 1;
+}
+
+.swiper-slide {
+    margin-bottom: 50px;
+    background-color: white;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    height: 420px;
+    width: 100%;
+    position: relative;
+}
+
+.swiper-slide img {
+    width: 100%;
+    border-radius: 15px;
+    height: 420px;
+}
+
+.swiper-txt {
+    position: absolute;
+    padding: 25px;
+}
+
+.swiper-txt h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: black;
+}
+
+/* Buy button styles */
+.buy-container {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    transition: 0.3s;
+    position: absolute;
+    top: -150px;
+    left: 65%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.buy-button:hover {
+    background-color: #333;
+    color: white;
+}
+
+/* Navigation buttons */
+.prev-button, .next-button {
+    position: absolute;
+    top: 350px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.prev-button {
+    left: 10px;
+    top: 200px;
+}
+
+.next-button {
+    right: 10px;
+    top: 200px;
+}
+
+.prev-button:hover, .next-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Designer styles */
+.designer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 40px;
+}
+
+.designer-options {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.designer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.designer-item img {
+    width: 150px;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.designer-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Cart styles */
+#cart-container {
+    position: relative;
+    display: inline-block;
+}
+
+#cart-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#cart-count {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+#cart-dropdown {
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cart-items li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+.hero {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-family: "Knewave", serif;
+    color: rgb(138, 29, 165);
+    font-size: 38px;
+
+}
+
+.hero p {
+    color: white;
+    font-size: 16px;
+}
+
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card .icon img {
+    width: auto;
+    height: 350px;
+}
+
+.service-card h2 {
+    color: white;
+    font-size: 18px;
+    margin-top: 15px;
+    
+}
+.service-card h2::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #991fa6, #e70d98, #ea6dc9);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.service-card h2::after{
+    width: 100%;
+}
+
+.service-card p {
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.service-card:hover p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+}

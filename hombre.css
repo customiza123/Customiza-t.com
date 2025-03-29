@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Urbanist', sans-serif;
+    background-color: #121212;
+    color: white;
+    min-height: 50vh;
+    padding-top: 60px;
+}
+
+/* Navbar styles */
+.navbar {
+    background: #110e19;
+    padding: 0px;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Menu container */
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative;
+    margin-right: 55px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #991fa6, #e70d98, #ea6dc9);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: rgba(24, 24, 24, 0.98);
+    top: 100%;
+    left: 0;
+    width: 1050px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid black;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.dropdown:hover .submenu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+}
+
+/* Submenu links */
+.submenu-links {
+    flex: 0;
+    list-style: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0px;
+}
+
+.submenu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 0;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.submenu ul li a:hover {
+    color: #6f85fd;
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* Submenu images */
+.submenu-images {
+    display: flex;
+    flex: 2;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+.submenu-images a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.submenu-images a:hover {
+    transform: translateY(-5px);
+}
+
+.submenu-images img {
+    width: 120px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.submenu-images a:hover img {
+    transform: scale(1.05);
+}
+
+.submenu-images a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    border-radius: 8px;
+}
+
+/* Logo styles */
+.logo img {
+
+    width: 150px;
+    height: auto;
+}
+
+
+/* Icons */
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition: color 0.3s;
+}
+
+.icons a:hover {
+    color: gray;
+}
+/* Configuración del contenedor principal */
+.collections-container {
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 40 80px;
+}
+
+.collections-title {
+    font-family: "Knewave", serif;
+    color: rgb(138, 29, 165);
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Grid de colecciones actualizado */
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 300px;
+    gap: 30px;
+}
+
+/* Configuración de las cards */
+.collection-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Distribución específica en el grid */
+.collection-card.playeras {
+    grid-column: span 8;
+    grid-row: span 2;
+}
+
+.collection-card.polos {
+    grid-column: span 4;
+    grid-row: span 1;
+}
+
+.collection-card.sudadera {
+    grid-column: span 4;
+    grid-row: span 1;
+}
+
+.collection-card.camisas {
+    grid-column: span 6;
+    grid-row: span 1;
+}
+
+.collection-card.pantalones {
+    grid-column: span 6;
+    grid-row: span 1;
+}
+
+/* Contenido de las cards */
+.collection-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collection-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        transparent 100%
+    );
+    transform: translateY(10px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collection-info h2 {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.collection-info .items {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 12px;
+    background: linear-gradient(90deg, #991fa6, #e70d98, #ea6dc9);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efectos hover */
+.collection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.collection-card:hover img {
+    transform: scale(1.1);
+}
+
+.collection-card:hover .collection-info {
+    transform: translateY(0);
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.6) 50%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+}
+
+.collection-card:hover .items {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Overlay con gradiente */
+.collection-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(153, 31, 166, 0.2), rgba(231, 13, 152, 0.2));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.collection-card:hover::after {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .collections-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .collection-card.playeras {
+        grid-column: span 6;
+    }
+    
+    .collection-card.polos,
+    .collection-card.sudadera,
+    .collection-card.camisas,
+    .collection-card.pantalones {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .collections-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+    }
+    
+    .collection-card {
+        grid-column: span 1 !important;
+    }
+}

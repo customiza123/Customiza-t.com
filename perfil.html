@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Cuenta - Inicio de Sesión</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <div class="main-container">
+    <div class="account-container">
+        <h2 class="account-title">Mi Cuenta</h2>
+        <div class="login-buttons">
+            <button class="btn btn-login" onclick="openLoginModal()">Iniciar sesión</button>
+            <button class="btn btn-register" onclick="openRegisterModal()">Registrarse</button>
+        </div>
+        <a href="pagina_principal.html" class="button home-button">Regresar a Página Principal</a>
+    </div>
+       <!-- Icono Admin ID Card -->
+    <div class="icon-card">
+            <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#118ab2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <circle cx="8.5" cy="12" r="2.5" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M14 9h4" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M14 12h4" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M14 15h4" stroke="#118ab2" stroke-width="1.5"/>
+                        <path d="M5 17c1.5-1 3.3-1 5 0" stroke="#118ab2" stroke-width="1.5"/>
+                    </svg>
+                </div>
+            <div class="account-containeer">
+                <div class="login-buttonss">
+                     <button class="btn-btn-btn-login" onclick="openLoginModal()">Admin ID</button>
+            </div>
+        </div>
+    </div>        
+
+    <!-- Modal de Inicio de Sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="form-submit">Iniciar Sesión</button>
+            </form>
+            <div class="social-login">
+                <button class="social-btn" onclick="loginWithGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Iniciar sesión con Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Registrarse</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder="Confirmar contraseña" required>
+                </div>
+                <button type="submit" class="form-submit">Registrarse</button>
+            </form>
+            <div class="social-login">
+                <button class="social-btn" onclick="registerWithGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Registrarse con Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword,
+            GoogleAuthProvider, 
+            signInWithPopup 
+        } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
+
+        // Configuración de Firebase (reemplazar con tus credenciales)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpVEq7eoPSnM--RyVOjS5q3txKQVzgzuM",
+            authDomain: "customiza-t.firebaseapp.com",
+            projectId: "customiza-t",
+            storageBucket: "customiza-t.firebasestorage.app",
+            messagingSenderId: "423385006080",
+            appId: "1:423385006080:web:81d380500166d3e4e2d8e5",
+            measurementId: "G-TBELCS10HH"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Funciones para manejar modales
+        window.openLoginModal = function() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        window.openRegisterModal = function() {
+            document.getElementById('registerModal').style.display = 'flex';
+        }
+
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Evento de inicio de sesión
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert('Inicio de sesión exitoso');
+                    closeModal('loginModal');
+                })
+                .catch((error) => {
+                    alert('Error de inicio de sesión: ' + error.message);
+                });
+        });
+
+        // Evento de registro
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelectorAll('input[type="email"]')[0].value;
+            const password = this.querySelectorAll('input[type="password"]')[0].value;
+            const confirmPassword = this.querySelectorAll('input[type="password"]')[1].value;
+
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert('Registro exitoso');
+                    closeModal('registerModal');
+                })
+                .catch((error) => {
+                    alert('Error de registro: ' + error.message);
+                });
+        });
+
+
+        // Inicio de sesión con Google
+        window.loginWithGoogle = function() {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    alert('Inicio de sesión con Google exitoso');
+                    closeModal('loginModal');
+                })
+                .catch((error) => {
+                    alert('Error en inicio de sesión con Google: ' + error.message);
+                });
+        }
+
+        // Registro con Google
+        window.registerWithGoogle = function() {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    alert('Registro con Google exitoso');
+                    closeModal('registerModal');
+                })
+                .catch((error) => {
+                    alert('Error en registro con Google: ' + error.message);
+                });
+        }
+
+
+// Admin login check and redirection
+function checkAdminLogin(user) {
+    console.log('User logged in:', user.email);
+    
+    // Expanded admin email list
+    const adminEmails = [
+        'Adrian.beni27@hotmail.com',
+        'alancastelan82@gmail.com',
+        'admin@customiza-t.com',
+        'admin@customiza-t.com',
+        'admin@customiza-t.com',
+        'admin@customiza-t.com',
+        // Agrega más correos de admin si es necesario
+    ];
+
+    if (adminEmails.includes(user.email)) {
+        console.log('Admin detected, redirecting to dashboard');
+        // Usar window.location.replace para prevenir que el usuario regrese
+        window.location.replace('Dashboard.html');
+    } else {
+        console.log('Not an admin, redirecting to main page');
+        window.location.replace('Dashboard.html');
+    }
+}
+
+// Modificar eventos de login para usar checkAdminLogin
+// Inicio de sesión con email/password
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    const password = this.querySelector('input[type="password"]').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log('Email login successful');
+            checkAdminLogin(user);
+        })
+        .catch((error) => {
+            console.error('Email login error:', error);
+            alert('Error de inicio de sesión: ' + error.message);
+        });
+});
+
+// Inicio de sesión con Google
+window.loginWithGoogle = function() {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            const user = result.user;
+            console.log('Google login successful');
+            checkAdminLogin(user);
+        })
+        .catch((error) => {
+            console.error('Google login error:', error);
+            alert('Error en inicio de sesión con Google: ' + error.message);
+        });
+}
+
+        // Script para formulario de inicio de sesión
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtener el formulario de inicio de sesión
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Aquí va tu código para procesar el inicio de sesión
+      // Por ejemplo, una petición fetch a tu API de autenticación
+      
+      // Una vez autenticado exitosamente, redirige a la página principal
+      // Reemplaza '/index.html' con la ruta de tu página principal
+      window.location.href = '/pagina_principal.html';
+    });
+  }
+  
+  // Obtener el formulario de registro
+  const registerForm = document.getElementById('register-form');
+  if (registerForm) {
+    registerForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Aquí va tu código para procesar el registro
+      // Por ejemplo, una petición fetch a tu API de registro
+      
+      // Una vez registrado exitosamente, redirige a la página principal
+      // Reemplaza '/index.html' con la ruta de tu página principal
+      window.location.href = '/pagina_principal.html';
+    });
+  }
+  
+  // Para el botón de inicio de sesión con Google
+  const googleLoginButton = document.querySelector('button[data-provider="google"]');
+  if (googleLoginButton) {
+    googleLoginButton.addEventListener('click', function() {
+      // La redirección después de autenticar con Google generalmente
+      // se maneja en la URL de callback, pero asegúrate de que esa
+      // función también redirija a la página principal
+    });
+  }
+});
+
+// Script para el botón de regreso a página principal
+document.addEventListener('DOMContentLoaded', function() {
+    const homeButton = document.querySelector('.home-button');
+    
+    homeButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Redirige a la página principal
+        window.location.href = 'pagina_principal.html';
+    });
+});
+
+    </script>
+</body>
+</html>

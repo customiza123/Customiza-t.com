@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playeras</title>
+    <link rel="shortcut icon" href="Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>>
+    <link rel="stylesheet" href="playera.css">
+    <script defer src="script.js"></script>
+    <script defer src="pagina_principal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menu-container">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="hombre.html">HOMBRE</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="gorra">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="mujer.html">MUJER</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="gorra">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="rebajas.html">REBAJAS</a>
+                </li>
+            </ul>
+
+            <div class="logo">
+                <a href="pagina_principal.html"><img src="img/Logo final.png" alt="Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="diseñohtml.html">DISEÑA</a></li>
+                <li><a href="quienes.html">¿QUIENES SOMOS?</a></li>
+                <li><a href="dudas.html">¿DUDAS?</a></li>
+            </ul>
+
+            <div class="icons">
+                <a href="buscar.html">🔍</a>
+                <a href="favoritos.html">❤</a>
+                <a href="perfil.html">👤</a>
+                <a href="carrito.html">🛒</a>
+            </div>
+        </div>
+        
+    </nav>
+    <div class="container">
+        <div class="product-container">
+            <div class="product-images">
+                <div class="main-image">
+                    <img src="img/polomujer.webp" alt="Playera Cuello V">
+                </div>
+                <div class="thumbnail-images">
+                    <div class="thumbnail active" data-img="https://via.placeholder.com/400x500">
+                        <img src="img/polofrentemujer.webp" alt="Vista frontal">
+                    </div>
+                    <div class="thumbnail" data-img="https://via.placeholder.com/400x500?text=Vista+Trasera">
+                        <img src="Img/poloatrasmujer.webp" alt="Vista trasera">
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="product-details">
+                
+                <h1 class="product-title">CAMISA TIPO "POLO" PARA MUJER </h1>
+                <div class="product-meta">100% Algodón • DIVERSOS COLORES</div>
+                
+                <div class="product-sku">SKU: C0482T0101C</div>
+                
+                <div class="product-price">
+                    <span class="price-amount">$ 256.00</span>
+                    <div class="price-info">
+                        Impuesto incluido. Los <a href="#" class="shipping-link">gastos de envío</a> se calculan en la pantalla de pagos.
+                    </div>
+                </div>
+                
+                <div class="product-options">
+                    <div class="quantity-selector">
+                        <label>Cantidad</label>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" id="decrease-qty">−</button>
+                            <input type="number" id="quantity" value="1" min="1">
+                            <button class="qty-btn" id="increase-qty">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="size-selector">
+                        <label>Variantes</label>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="ECH">ECH</button>
+                            <button class="size-btn" data-size="CH">CH</button>
+                            <button class="size-btn" data-size="M">M</button>
+                            <button class="size-btn" data-size="G">G</button>
+                            <button class="size-btn" data-size="EG">XL</button>
+                            <button class="size-btn" data-size="EEG">XXL</button>
+                        </div>
+                        <a href="#" class="size-guide">Guía de tallas</a>
+                    </div>
+                    
+                    <div class="color-selector">
+                        <label>Color</label>
+                        <div class="color-options">
+                            <div class="color-option active" data-color="Blanco" style="background-color: white;"></div>
+                            <div class="color-option" data-color="Negro" style="background-color: black;"></div>
+                            <div class="color-option" data-color="Azul Marino" style="background-color: navy;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button id="add-to-cart" class="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+                
+                <div class="product-description">
+                    <h3>Descripción del producto</h3>
+                    <p>Playera de cuello V con manga corta para caballero, fabricada con 100% algodón de alta calidad. Diseño clásico y cómodo, ideal para uso diario. Disponible en varios colores y tallas.</p>
+                    <ul>
+                        <li>Material: 100% Algodón</li>
+                        <li>Cuello: Tipo V</li>
+                        <li>Manga: Corta</li>
+                        <li>Peso: Medio (Mid Weight)</li>
+                        <li>Ocasión: Casual</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="polosmujer.js"></script>
+    </body>
+    </html>

@@ -1,0 +1,326 @@
+/* Fonts imports */
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Knewave&display=swap');
+/* Reset and general styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Urbanist', sans-serif;
+    background-color: #121212;
+    color: white;
+    min-height: 50vh;
+    padding-top: 60px;
+}
+
+/* Navbar styles */
+.navbar {
+    background: #110e19;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Menu container */
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative;
+    margin-right: 55px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #991fa6, #e70d98, #ea6dc9);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: rgba(24, 24, 24, 0.98);
+    top: 100%;
+    left: 0;
+    width: 1050px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid black;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.dropdown:hover .submenu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+}
+
+/* Submenu links */
+.submenu-links {
+    flex: 0;
+    list-style: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0px;
+}
+
+.submenu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 0;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.submenu ul li a:hover {
+    color: #6f85fd;
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* Submenu images */
+.submenu-images {
+    display: flex;
+    flex: 2;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+.submenu-images a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.submenu-images a:hover {
+    transform: translateY(-5px);
+}
+
+.submenu-images img {
+    width: 120px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.submenu-images a:hover img {
+    transform: scale(1.05);
+}
+
+.submenu-images a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    border-radius: 8px;
+}
+
+/* Logo styles */
+.logo img {
+
+    width: 150px;
+    height: auto;
+}
+
+
+/* Icons */
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition: color 0.3s;
+}
+
+.icons a:hover {
+    color: #808080;
+}
+
+/* Contenedor flex para dividir los formularios en izquierda y derecha */
+
+
+/* Estilos generales de los formularios */
+.form-box {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 60px;
+}
+
+button {
+    background: #ff007f;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #e60073;
+}
+/* Estilos del Newsletter */
+.newsletter {
+    margin-top: -300px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: 100px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor principal */
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    
+}
+
+/* Imagen del lado izquierdo */
+.image-box img {
+    margin-top: -400px;
+    margin-right: 900px;
+    width: 350px;
+
+}
+/* Sección de Redes Sociales */
+.social-media {
+    margin-top: -20px;
+    margin-right:900px;
+}
+
+.social-media h3 {
+    
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.social-media {
+    text-align: center; /* Centra el texto */
+}
+
+
+.redes {
+    display: flex;
+    justify-content: center; /* Centra los íconos */
+    gap: 10px; /* Espacio entre imágenes */
+    margin-top: 10px; /* Espacio entre el texto y las imágenes */
+}
+
+.redes img {
+    width: 40px; /* Tamaño pequeño */
+    height: auto; /* Mantiene la proporción */
+}

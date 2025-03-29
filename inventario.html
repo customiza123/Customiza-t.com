@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Customiza-T</title>
+    <link rel="shortcut icon" href="Img/Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="dashboard.css">
+    <script defer src="dashboard.js"></script>
+    <script defer src="inventario.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="pagina_principal.html" class="logo-container">
+                <img src="Img/Logo final.png" alt="Customiza-T Logo" class="logo">
+            </a>
+            <nav>
+                <a href="Dashboard.html">📦 Pedidos</a>
+                <a href="envios.html">🚚 Envíos</a>
+                <a href="inventario.html" class="active">📦 Inventario</a>
+                <a href="clientes.html">👥 Clientes</a>
+                <a href="#" id="toggle-theme">🌓 Modo Oscuro</a>
+            </nav>
+            <a href="pagina_principal.html" id="logout-button">↪️ Cerrar sesión</a></li>    
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <header>
+                <h1>Gestión de Inventario</h1>
+                <div class="user-info">👤 Admin</div>
+            </header>
+
+            <section class="grid">
+                <div class="card">
+                    <h3>📦 Total Productos</h3>
+                    <p id="total-productos">0</p>
+                </div>
+                <div class="card">
+                    <h3>⚠️ Stock Bajo</h3>
+                    <p id="stock-bajo">0</p>
+                </div>
+                <div class="card">
+                    <h3>❌ Sin Stock</h3>
+                    <p id="sin-stock">0</p>
+                </div>
+                <div class="card">
+                    <h3>💰 Valor Total</h3>
+                    <p id="valor-total">$0.00</p>
+                </div>
+            </section>
+
+            <!-- Sección de búsqueda y filtros -->
+            <section class="search-section">
+                <h2>Buscar Productos</h2>
+                <div class="search-container">
+                    <input type="text" id="searchProducto" placeholder="Buscar por ID, nombre o descripción...">
+                    <select id="filterCategoria">
+                        <option value="">Todas las categorías</option>
+                        <!-- Las categorías se cargarán aquí -->
+                    </select>
+                    <select id="filterStock">
+                        <option value="">Todo el stock</option>
+                        <option value="bajo">Stock bajo</option>
+                        <option value="sin">Sin stock</option>
+                    </select>
+                    <button id="searchBtn">Buscar</button>
+                </div>
+            </section>
+
+            <!-- Tabla de Productos -->
+            <section class="orders-table">
+                <h2>📋 Lista de Productos</h2>
+                <div class="table-actions">
+                    <button id="newProductBtn">Nuevo Producto</button>
+                    <button id="exportCSV">Exportar CSV</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Categoría</th>
+                            <th>Stock</th>
+                            <th>Stock Mínimo</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productosTableBody">
+                        <!-- Los productos se cargarán aquí -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Formulario para nuevo producto (oculto por defecto) -->
+            <section class="modal" id="productFormModal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="modalTitle">Nuevo Producto</h2>
+                    <form id="productForm">
+                        <input type="hidden" id="productId">
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción:</label>
+                            <textarea id="descripcion" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoría:</label>
+                            <select id="categoria" required>
+                                <!-- Las categorías se cargarán aquí -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="stock">Stock:</label>
+                            <input type="number" id="stock" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stockMinimo">Stock Mínimo:</label>
+                            <input type="number" id="stockMinimo" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Precio:</label>
+                            <input type="number" id="precio" step="0.01" min="0" required>
+                        </div>
+                        <button type="submit">Guardar</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customiza-T Dashboard</title>
+    <link rel="shortcut icon" href="Img/Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="dashboard.css">
+    <script defer src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="pagina_principal.html" class=logo-container">
+                <img src="Img/Logo final.png" alt="Customiza-T Logo" class="logo">
+                </a>
+            <nav>
+                <a href="Dashboard.html" class="active">📦 Pedidos</a>
+                <a href="envios.html">🚚 Envíos</a>
+                <a href="inventario.html">📦 Inventario</a>
+                <a href="clientes.html">👥 Clientes</a>
+                <a href="#" id="toggle-theme">🌓 Modo Oscuro</a>
+            </nav>
+            <a href="pagina_principal.html" id="logout-button">↪️ Cerrar sesión</a></li>    
+            </aside>
+    </div>
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <header>
+                <h1>Dashboard</h1>
+                <div class="user-info">👤 Admin</div>
+            </header>
+
+            <section class="grid">
+                <div class="card">
+                    <h3>📦 Total Pedidos</h3>
+                    <p id="total-pedidos">0</p>
+                </div>
+                <div class="card">
+                    <h3>🚀 En Proceso</h3>
+                    <p id="pedidos-proceso">0</p>
+                </div>
+                <div class="card">
+                    <h3>✅ Completados</h3>
+                    <p id="pedidos-completados">0</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pedidosChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Nuevo Calendario y Tabla de Pedidos -->
+            <section class="orders-container">
+                <div class="calendar-section">
+                    <h2>📅 Selecciona una Fecha</h2>
+                    <input type="month" id="monthPicker">
+                    <input type="date" id="datePicker">
+                </div>
+
+                <div class="orders-table">
+                    <h2>📋 Pedidos del Día/Mes</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>Status</th>
+                                <th>Cantidad</th>
+                                <th>ID Producto</th>
+                                <th>Descripción</th>
+                                <th>Diseño</th>
+                                <th>ID Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <!-- Los pedidos se cargarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Últimos Pedidos -->
+            <section class="orders">
+                <h2>Últimos Pedidos</h2>
+                <div class="orders-grid" id="orders-container">
+                    <!-- Tarjetas de pedidos serán generadas por JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="dashboard2.js"></script>
+</body>
+</html>
+
+

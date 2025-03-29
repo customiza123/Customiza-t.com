@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Customiza-t</title>
+    <link rel="shortcut icon" href="img/Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="pagina_principal.css">
+    <link rel="stylesheet" href="barra_iconos.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="carrito.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menu-container">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="hombre.html">HOMBRE</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="gorra">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="mujer.html">MUJER</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="#"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="#"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="#"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="gorra">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            
+            <ul class="nav-links">
+                <li><a href="diseñohtml.html">DISEÑA</a></li>
+            </ul>
+
+            <div class="logo">
+                <a href="pagina_principal.html"><img src="img/Logo final.png" alt="Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="quienes.html">¿QUIENES SOMOS?</a></li>
+                <li><a href="dudas.html">¿DUDAS?</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <!-- Búsqueda -->
+                <div class="icon-container" id="search-icon">
+                    <i class="fas fa-search"></i>
+                    <span class="tooltip">Buscar</span>
+                    
+                    <!-- Panel de búsqueda desplegable -->
+                    <div class="dropdown-panel search-panel">
+                        <h3>Buscar productos</h3>
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="¿Qué estás buscando?">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="recent-searches">
+                            <h4>Búsquedas recientes</h4>
+                            <ul id="recent-searches-list">
+                                <!-- Se llenará con JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Favoritos -->
+                <div class="icon-container" id="favorites-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="tooltip">Favoritos</span>
+                    <span class="badge" id="favorites-count">0</span>
+                    
+                    <!-- Panel de favoritos desplegable -->
+                    <div class="dropdown-panel favorites-panel">
+                        <h3>Tus favoritos</h3>
+                        <div id="favorites-list">
+                            <!-- Se llenará con JavaScript -->
+                        </div>
+                        <a href="favoritos.html" class="view-all">Ver todos los favoritos</a>
+                    </div>
+                </div>
+                
+                <!-- Cuenta de usuario -->
+                <div class="icon-container" id="user-icon">
+                    <i class="fas fa-user"></i>
+                    <span class="tooltip">Mi cuenta</span>
+                    
+                    <!-- Panel de cuenta desplegable -->
+                    <div class="dropdown-panel user-panel">
+                        <h3>Mi cuenta</h3>
+                        <div id="user-not-logged">
+                            <p>Inicia sesión para acceder a tu cuenta</p>
+                            <div class="auth-buttons">
+                                <button id="login-button">Iniciar sesión</button>
+                                <button id="register-button">Registrarse</button>
+                            </div>
+                        </div>
+                        <div id="user-logged" style="display: none;">
+                            <p>Hola, <span id="user-name"></span></p>
+                            <ul class="user-menu">
+                                <li><a href="perfil.html">Mi perfil</a></li>
+                                <li><a href="pedidos.html">Mis pedidos</a></li>
+                                <li><a href="disenos.html">Mis diseños</a></li>
+                                <li><a href="#" id="logout-button">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carrito de compras -->
+                <div class="icon-container" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="tooltip">Carrito</span>
+                    <span class="badge" id="cart-count">0</span>
+                    
+                    <!-- Panel de carrito desplegable -->
+                    <div class="dropdown-panel cart-panel">
+                        <h3>Tu carrito</h3>
+                        <div id="cart-items-mini">
+                            <!-- Se llenará con JavaScript -->
+                        </div>
+                        <div class="cart-total">
+                            <p>Total: <span id="cart-total-amount">$0.00</span></p>
+                        </div>
+                        <div class="cart-buttons">
+                            <a href="carrito.html" class="view-cart-button">Ver carrito</a>
+                            <form action="https://www.paypal.com/ncp/payment/6U28Y2Z4JY9ZC" method="post" target="_blank" style="display:inline;">
+                                <button id="checkout-button" type="submit">Pagar ahora</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal del carrito -->
+    <main class="cart-container">
+        <h1>Tu Carrito de Compras</h1>
+        
+        <div class="cart-grid">
+            <div class="cart-items-container">
+                <div class="cart-header">
+                    <div class="cart-column product-info">Producto</div>
+                    <div class="cart-column">Precio</div>
+                    <div class="cart-column">Cantidad</div>
+                    <div class="cart-column">Subtotal</div>
+                    <div class="cart-column">Acciones</div>
+                </div>
+                
+                <div id="cart-items-list">
+                    <!-- Los productos del carrito se cargarán dinámicamente aquí -->
+                    <div class="cart-empty-message" id="empty-cart-message">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Tu carrito está vacío</p>
+                        <a href="pagina_principal.html" class="continue-shopping">Seguir comprando</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <h2>Resumen del pedido</h2>
+                <div class="summary-item">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Envío:</span>
+                    <span id="shipping-cost">$0.00</span>
+                </div>
+                <div class="summary-item discount" id="discount-container" style="display: none;">
+                    <span>Descuento:</span>
+                    <span id="discount-amount">-$0.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                
+                <div class="coupon-container">
+                    <input type="text" id="coupon-code" placeholder="Código de descuento">
+                    <button id="apply-coupon">Aplicar</button>
+                </div>
+                
+                <div>
+                <form action="https://www.paypal.com/ncp/payment/6U28Y2Z4JY9ZC" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                    <input class="pp-6U28Y2Z4JY9ZC" type="submit" value="Pagar ahora" />
+                    <img src=https://www.paypalobjects.com/images/Debit_Credit_APM.svg alt="cards" />
+                    <section>
+                      Con la tecnología de <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/>
+                    </section>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/Logo final.png" alt="Logo Customiza-T">
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Productos</h3>
+                    <ul>
+                        <li><a href="hombre.html">Hombre</a></li>
+                        <li><a href="mujer.html">Mujer</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ayuda</h3>
+                    <ul>
+                        <li><a href="dudas.html">Contacto</a></li>
+                        <li><a href="dudas.html">Envíos</a></li>
+                        <li><a href="dudas.html">Devoluciones</a></li>
+                        <li><a href="dudas.html">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Acerca de</h3>
+                    <ul>
+                        <li><a href="quienes.html">¿Quienes somos?</a></li>
+                        <li><a href="quienes.html">Responsabilidad social</a></li>
+                        <li><a href="#">Prensa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Suscríbete a nuestro newsletter</h4>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Tu correo electrónico">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 Customiza-T - Todos los derechos reservados
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="barra_iconos.js"></script>
+    <script src="carrocompra.js"></script>
+</body>
+</html>

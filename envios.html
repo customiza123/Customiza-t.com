@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envíos - Customiza-T</title>
+    <link rel="shortcut icon" href="Img/Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="dashboard.css">
+    <script defer src="dashboard.js"></script>
+    <script defer src="envios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="pagina_principal.html" class="logo-container">
+                <img src="Img/Logo final.png" alt="Customiza-T Logo" class="logo">
+            </a>
+            <nav>
+                <a href="Dashboard.html">📦 Pedidos</a>
+                <a href="envios.html" class="active">🚚 Envíos</a>
+                <a href="inventario.html">📦 Inventario</a>
+                <a href="clientes.html">👥 Clientes</a>
+                <a href="#" id="toggle-theme">🌓 Modo Oscuro</a>
+            </nav>
+            <a href="pagina_principal.html" id="logout-button">↪️ Cerrar sesión</a></li>        
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <header>
+                <h1>Gestión de Envíos</h1>
+                <div class="user-info">👤 Admin</div>
+            </header>
+
+            <section class="grid">
+                <div class="card">
+                    <h3>📦 Total Envíos</h3>
+                    <p id="total-envios">0</p>
+                </div>
+                <div class="card">
+                    <h3>✅ Entregados</h3>
+                    <p id="envios-entregados">0</p>
+                </div>
+                <div class="card">
+                    <h3>🚚 En Tránsito</h3>
+                    <p id="envios-pendientes">0</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="enviosChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Sección de búsqueda y filtros -->
+            <section class="search-section">
+                <h2>Buscar Envíos</h2>
+                <div class="search-container">
+                    <input type="text" id="searchEnvio" placeholder="Buscar por ID, cliente o status...">
+                    <select id="filterStatus">
+                        <option value="">Todos los status</option>
+                        <option value="En tránsito">En tránsito</option>
+                        <option value="Entregado">Entregado</option>
+                        <option value="Pendiente">Pendiente</option>
+                    </select>
+                    <button id="searchBtn">Buscar</button>
+                </div>
+            </section>
+
+            <!-- Tabla de Envíos -->
+            <section class="orders-table">
+                <h2>📋 Lista de Envíos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Envío</th>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Dirección</th>
+                            <th>Fecha Envío</th>
+                            <th>Fecha Entrega Est.</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enviosTableBody">
+                        <!-- Los envíos se cargarán aquí -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Formulario para nuevo envío -->
+            <section class="new-shipment">
+                <h2>Registrar Nuevo Envío</h2>
+                <form id="newShipmentForm">
+                    <div class="form-group">
+                        <label for="idPedido">ID Pedido:</label>
+                        <input type="number" id="idPedido" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <textarea id="direccion" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaEnvio">Fecha Envío:</label>
+                        <input type="date" id="fechaEnvio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="seguimiento">Código Seguimiento:</label>
+                        <input type="text" id="seguimiento">
+                    </div>
+                    <button type="submit">Registrar Envío</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

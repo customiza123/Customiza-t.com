@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customiza-T - Firebase Integration</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+</head>
+<body>
+    <h1>Customiza-T - Datos desde Firebase</h1>
+    <div id="productos"></div>
+
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpVEq7eoPSnM--RyVOjS5q3txKQVzgzuM",
+            authDomain: "customiza-t.firebaseapp.com",
+            databaseURL: "https://customiza-t.firebaseio.com",
+            projectId: "customiza-t",
+            storageBucket: "customiza-t.firebasestorage.app",
+            messagingSenderId: "423385006080",
+            appId: "1:423385006080:web:81d380500166d3e4e2d8e5"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // Referencia a la base de datos
+        const database = firebase.database();
+        
+        // Obtener datos de productos
+        database.ref('productos').on('value', (snapshot) => {
+            const productos = snapshot.val();
+            let html = '<ul>';
+            
+            for (let id in productos) {
+                const producto = productos[id];
+                html += `<li>${producto.nombre} - $${producto.precio}</li>`;
+            }
+            
+            html += '</ul>';
+            document.getElementById('productos').innerHTML = html;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - Customiza-T</title>
+    <link rel="shortcut icon" href="Img/Logo final.png" type="image/x-icon">
+    <link rel="stylesheet" href="dashboard.css">
+    <script defer src="dashboard.js"></script>
+    <script defer src="clientes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="pagina_principal.html" class="logo-container">
+                <img src="Img/Logo final.png" alt="Customiza-T Logo" class="logo">
+            </a>
+            <nav>
+                <a href="Dashboard.html">📦 Pedidos</a>
+                <a href="envios.html">🚚 Envíos</a>
+                <a href="inventario.html">📦 Inventario</a>
+                <a href="clientes.html" class="active">👥 Clientes</a>
+                <a href="#" id="toggle-theme">🌓 Modo Oscuro</a>
+            </nav>
+            <a href="pagina_principal.html" id="logout-button">↪️ Cerrar sesión</a></li>    
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <header>
+                <h1>Gestión de Clientes</h1>
+                <div class="user-info">👤 Admin</div>
+            </header>
+
+            <section class="grid">
+                <div class="card">
+                    <h3>👥 Total Clientes</h3>
+                    <p id="total-clientes">0</p>
+                </div>
+                <div class="card">
+                    <h3>🆕 Nuevos este mes</h3>
+                    <p id="nuevos-mes">0</p>
+                </div>
+                <div class="card">
+                    <h3>🔄 Clientes Frecuentes</h3>
+                    <p id="clientes-frecuentes">0</p>
+                </div>
+                <div class="card">
+                    <h3>⏸️ Clientes Inactivos</h3>
+                    <p id="clientes-inactivos">0</p>
+                </div>
+            </section>
+
+            <!-- Sección de búsqueda -->
+            <section class="search-section">
+                <h2>Buscar Clientes</h2>
+                <div class="search-container">
+                    <input type="text" id="searchCliente" placeholder="Buscar por nombre, email o teléfono...">
+                    <select id="filterStatus">
+                        <option value="">Todos los clientes</option>
+                        <option value="">Todos los clientes</option>
+                        <option value="activo">Clientes activos</option>
+                        <option value="inactivo">Clientes inactivos</option>
+                        <option value="frecuente">Clientes frecuentes</option>
+                    </select>
+                    <button id="searchButton">Buscar</button>
+                </div>
+            </section>
+
+            <!-- Tabla de clientes -->
+            <section class="table-section">
+                <h2>Listado de Clientes</h2>
+                <div class="table-container">
+                    <table id="clientesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Fecha Registro</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí se cargarán los clientes dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Gráfico de clientes -->
+            <section class="chart-section">
+                <h2>Análisis de Clientes</h2>
+                <div class="chart-container">
+                    <canvas id="clientesChart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

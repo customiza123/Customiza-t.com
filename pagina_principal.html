@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Customiza-t</title>
+        <link rel="shortcut icon" href="img/Logo final.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+        <link rel="stylesheet" href="pagina_principal.css">
+        <link rel="stylesheet" href="barra_iconos.css">
+        <link rel="stylesheet" href="footer.css">
+        <script defer src="script.js"></script>
+    </head>
+<body>
+    <nav class="navbar">
+        <div class="menu-container">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="hombre.html">HOMBRE</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="playerahombre.html"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="sudaderahombre.html"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="pantalonhombre.html"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="camisashombre.html"><img src="img/2.png" alt="Camisas">Camisas</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="mujer.html">MUJER</a>
+                    <div class="submenu">
+                        <ul class="submenu-links">
+                            <li><a href="#">Nuevos lanzamientos</a></li>
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">Todo</a></li>
+                        </ul>
+                        <div class="submenu-images">
+                            <a href="playeramujer.html"><img src="img/playera.png" alt="Playeras">Playeras</a>
+                            <a href="sudaderamujer.html"><img src="img/sudadera.png" alt="Sudaderas">Sudaderas</a>
+                            <a href="pantalonmujer.html"><img src="img/pans.png" alt="Joggers">Joggers</a>
+                            <a href="#"><img src="img/gorra.png" alt="Gorras">Gorras</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="diseñohtml.html">DISEÑA</a></li>
+            </ul>
+
+            <div class="logo">
+                <a href="pagina_principal.html"><img src="img/Logo final.png" alt="Logo"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="quienes.html">¿QUIENES SOMOS?</a></li>
+                <li><a href="dudas.html">¿DUDAS?</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <div class="icon-container" id="search-icon">
+                    <i class="fas fa-search"></i>
+                    <span class="tooltip"></span>
+                    <div class="dropdown-panel search-panel">
+                        <h3>Buscar productos</h3>
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="¿Qué estás buscando?">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="recent-searches">
+                            <h4>Búsquedas recientes</h4>
+                            <ul id="recent-searches-list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-container" id="favorites-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="tooltip"></span>
+                    <span class="badge" id="favorites-count">2</span>
+                    <div class="dropdown-panel favorites-panel">
+                        <h3>Tus favoritos</h3>
+                        <div id="favorites-list"></div>
+                        <a href="favoritos.html" class="view-all">Ver todos los favoritos</a>
+                    </div>
+                </div>
+                <div class="icon-container" id="user-icon">
+                    <i class="fas fa-user"></i>
+                    <span class="tooltip"></span>
+                    <div class="dropdown-panel user-panel">
+                        <h3>Mi cuenta</h3>
+                        <div id="user-not-logged">
+                            <p>Inicia sesión para acceder a tu cuenta</p>
+                            <div class="auth-buttons">
+                                <button id="login-button" onclick="window.location.href='perfil.html'">Iniciar sesión</button>
+                                <button id="register-button" onclick="window.location.href='perfil.html'">Registrarse</button>
+                            </div>
+                        </div>
+                        <div id="user-logged" style="display: none;">
+                            <p>Hola, <span id="user-name"></span></p>
+                            <ul class="user-menu">
+                                <li><a href="perfil.html">Mi perfil</a></li>
+                                <li><a href="pedidos.html">Mis pedidos</a></li>
+                                <li><a href="disenos.html">Mis diseños</a></li>
+                                <li><a href="#" id="logout-button">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-container" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="tooltip"></span>
+                    <span class="badge" id="cart-count">2</span>
+                    <div class="dropdown-panel cart-panel">
+                        <h3>Tu carrito</h3>
+                        <div id="cart-items"></div>
+                        <div class="cart-total">
+                            <p>Total: <span id="cart-total-amount">$0.00</span></p>
+                        </div>
+                        <div class="cart-buttons">
+                            <a href="carrito.html" class="view-cart-button">Ver carrito</a>
+                            <button id="checkout-button">Pagar ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+        </div>
+    </nav>
+
+    <!-- Carrusel de imágenes -->
+    <div class="swiper mySwiper container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="Img/carrucel1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="Img_DB/Diseño 18.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="Img_DB/Diseño 15.png" alt="">
+            </div>  
+            <div class="swiper-slide">
+                <img src="Img_DB/Diseño 17.1.jpg" alt="">
+            </div>  
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>EL DISEÑO DE TUS SUEÑOS AL ALCANCE</h1>
+        <p>Nuestros nuevas tendencias al alcance, con estas increibles promociones</p>
+    </section>
+    <section class="services">
+        <div class="service-card">
+            <div class="icon">
+                <img src="Img_DB/Diseño 34.png" alt="Servicios integrados">
+            </div>
+            <h2>Tendencias de Invierno</h2>
+            <p>Todos los procesos que hacemos se encuentran en el mismo espacio, para reducir tiempos de producción.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon">
+                <img src="Img_DB/Diseño 21.png" alt="Tecnología moderna">
+            </div>
+            <h2>Lo mejor de nuestra coleccion</h2>
+            <p>Los avances tecnológicos que ofrecemos nos ayudan a producir prendas de alta calidad y función.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon">
+                <img src="Img_DB/Diseño 27.png" alt="Personal capacitado">
+            </div>
+            <h2>Hoddies a tu manera</h2>
+            <p>Nuestro staff se capacita de manera continua mediante cursos especializados en sus respectivas áreas.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon">
+                <img src="Img_DB/Diseño 7.jpeg" alt="Atención personalizada">
+            </div>
+            <h2>El mejor año de tu vida</h2>
+            <p>Trabajamos mano a mano con nuestros clientes, para hacer realidad sus objetivos con las prendas finales.</p>
+        </div>
+    </section>
+    <div class="carousel">
+        <div class="image-container">
+            <div class="image-wrapper" id="wrapper1">
+                <img src="Img_DB/mujersd.png" alt="Antes" class="before">
+                
+                <div class="after-image" id="afterImage">
+                    <img src="Img_DB/Diseño 29.png" alt="Después" class="after">
+                </div>
+                <div class="slider-line" id="sliderLine"></div>
+                <input type="range" min="0" max="100" value="50" class="slider" id="slider">
+            </div>
+        </div>
+        <div class="text-content">
+            <span class="badge">TUS PROPIOS PRODUCTOS AL ALCANCE MAS FACIL</span>
+            <h1><span>Diseño a medida de tus Playeras</span></h1>
+            <p>En Customiza-t nos enfocamos en hacer mas facil tus sueños con productos personalizados que antes veias imposible plasmar en tus prendas favoritas, nuetra mision es ayudarte en la creacion de tus prendas personalizadas...</p>
+        </div>
+    </div>
+
+    <!-- Agregar al final del body antes de los scripts -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="img/Logo final.png" alt="Logo Customiza-T">
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>Productos</h3>
+                <ul>
+                    <li><a href="hombre.html">Hombre</a></li>
+                    <li><a href="mujer.html">Mujer</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="dudas.html">Contacto</a></li>
+                    <li><a href="dudas.html">Envíos</a></li>
+                    <li><a href="dudas.html">Devoluciones</a></li>
+                    <li><a href="dudas.html">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Acerca de</h3>
+                <ul>
+                    <li><a href="quienes.html">¿Quienes somos?</a></li>
+                    <li><a href="quienes.html">Responsabilidad social</a></li>
+                    <li><a href="#">Prensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                <div class="newsletter">
+                    <h4>Suscríbete a nuestro newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="copyright">
+            © 2025 Customiza-T - Todos los derechos reservados
+        </div>
+    </div>
+</footer>
+
+    <script src="pagina_principal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="barra_iconos.js"></script>
+</body>
+</html>
